@@ -1,0 +1,105 @@
+
+body{
+    background-color: black;
+}
+
+
+/* Cards */
+
+
+.Team_card{
+    display: flex;
+    flex-direction: column;
+    
+    justify-items: center;
+    justify-self: center;
+    align-self: center;
+  }
+  
+  .Team_card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color:white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px #8dfe00;
+    border-radius: 10px;
+    padding: 20px;
+    width: 70%;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .Team_card :hover{
+    transform: scale(1.05);
+    transition: 1.3s;
+    
+  }
+
+
+  .teams_card{
+
+    display: flex;
+    flex-direction: row;
+  }
+
+
+  .teams_card .image :hover {
+    transform: scale(1.1);
+    transition: 0.5s;
+  }
+  
+  .Team_card h3 {
+    color: #8dfe00;
+    justify-content: right;
+    margin-bottom: 15px;
+    
+  }
+
+.Team_card h3 :hover{
+    color: white;
+}
+
+  
+  .Team_card p{
+    color: #8dfe00;
+    
+  }
+ 
+@media (max-width: 768px) {
+
+    /* Adjust the card layout for smaller screens */
+    .Team_card {
+        width: 95%;  /* Make it take most of the screen width */
+        padding: 15px; /* Reduce padding for smaller screens */
+    }
+
+    /* Adjust the team card content layout */
+    .teams_card {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center;
+        text-align: center; /* Center the text */
+    }
+
+    /* Reduce image size */
+    .teams_card .image {
+        width: 80%; /* Reduce size */
+        height: auto;
+        max-width: 250px; /* Limit max width */
+    }
+
+    /* Make sure the text is centered */
+    .teams_card h3 {
+        font-size: 3rem; /* Reduce font size for smaller screens */
+        text-align: center;
+    }
+
+    .teams_card p {
+        font-size: 1.5rem; /* Reduce font size */
+    }
+
+    /* Reduce margin & padding for smaller screens */
+    .Team_card p {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}

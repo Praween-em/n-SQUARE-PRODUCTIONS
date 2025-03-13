@@ -11,6 +11,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
+
 </head>
 <body>
 
@@ -54,21 +57,21 @@
   <header class="my_header">
     <h1>Welcome to The N SQUARE FILMS</h1>
   </header>
-
-  <!-- Slideshow Section -->
+  <!-- slideshow animation files -->
   <section id="slideshow">
     <div class="slideshow-container">
-      <div class="slide fade">
-        <img src="https://placehold.co/600x400" alt="Slide 1">
+      <div class="slide">
+        <div class="lottie-animation" id="lottie1"></div>
       </div>
-      <div class="slide fade">
-        <img src="https://placehold.co/600x400" alt="Slide 2">
+      <div class="slide">
+        <div class="lottie-animation" id="lottie2"></div>
       </div>
-      <div class="slide fade">
-        <img src="https://placehold.co/600x400" alt="Slide 3">
+      <div class="slide">
+        <div class="lottie-animation" id="lottie3"></div>
       </div>
     </div>  
   </section>
+  
 
   <!-- Our Team Section -->
   <section>
@@ -77,36 +80,36 @@
       <div class="card">
         <h3>FOUNDER & Director</h3>
         <p>LOKESH DHRUVA</p>
-        <button>Learn More</button>
+        <button onclick="openlokeshPage()" >Learn More</button>
       </div>
       <div class="card">
         <h3>CO-Director</h3>
         <img style="max-width:250px;max-height:250px" src="pavan kalyan.jpg">
         <p>PAVAN KALYAN</p>
-        <button>Learn More</button>
+        <button onclick="openpavankalyanPage()" >Learn More</button>
       </div>
       <div class="card">
         <h3>Associate Director</h3>
         <img style="max-width:250px;max-height:250px" src="462914810_3874720309428294_4919017049160558717_n.jpg">
         <p>PRAVEEN KUMAR</p>
-        <button>Learn More</button>
+        <button onclick="openapraveenPage()"  >Learn More</button>
       </div>
       <div class="card">
         <h3>Assistant Director</h3>
        <img style="max-width:250px;max-height:250px" src="WhatsApp Image 2025-03-12 at 1.02.21 PM.jpeg">
-        <p>PAVAN</p>
-        <button>Learn More</button>
+        <p>ARAVA PAVAN</p>
+        <button  onclick="openaravapavanPage()" >Learn More</button>
       </div>
       <div class="card">
         <h3>Production Department</h3>
+        <img style="max-width:250px;max-height:250px" src="Raghava .jpg">
         <p>RAGHAVA</p>
-       
-        <button>Learn More</button>
+        <button onclick="openraghavaPage()" >Learn More</button>
       </div>
     <div class="card">
       <h3>Production Manager</h3>
       <p>HANUMANTH REDDY</p>
-      <button>Learn More</button>
+      <button onclick="openhanmanthPage()" >Learn More</button>
     </div>
   </section>
 <!-- PORTFOILIO Section -->
@@ -179,20 +182,78 @@
     }
   </script>
   <script>
+  document.addEventListener("DOMContentLoaded", function () {
     let slideIndex = 0;
+    let slides = document.querySelectorAll(".slide");
+  
+    // Lottie Animations
+    const animations = [
+      { id: "lottie1", path: "Animation1.json" },
+      { id: "lottie2", path: "Animation2.json" },
+      { id: "lottie3", path: "Animation3.json" },
+    ];
+  
+    animations.forEach(anim => {
+      lottie.loadAnimation({
+        container: document.getElementById(anim.id),
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        path: anim.path // Replace with actual paths to your Lottie files
+      });
+    });
+  
     function showSlides() {
-      let slides = document.getElementsByClassName("slide");
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";  
-      }
-      slideIndex++;
-      if (slideIndex > slides.length) { slideIndex = 1 }    
-      slides[slideIndex - 1].style.display = "block";  
-      setTimeout(showSlides, 4000); // Change slide every 4 seconds
+      slides.forEach((slide, i) => {
+        slide.classList.remove("active", "prev");
+        if (i === slideIndex) slide.classList.add("active");
+        if (i === (slideIndex - 1 + slides.length) % slides.length) slide.classList.add("prev");
+      });
+  
+      slideIndex = (slideIndex + 1) % slides.length;
+      setTimeout(showSlides, 4000); // Change slide every 4s
     }
+  
     showSlides();
-  </script>
-  <script>
+  });
+</script>
+
+<script>
+  function openraghavaPage() {
+      window.location.href = "raghava.html"; // Opens newpage.html in the same location
+  }
+</script>
+
+
+<script>
+  function openaravapavanPage() {
+      window.location.href = "aravapavan.html"; // Opens newpage.html in the same location
+  }
+</script>
+
+<script>
+  function openpraveenPage() {
+      window.location.href = "praveen.html"; // Opens newpage.html in the same location
+  }
+</script>
+<script>
+  function openlokeshPage() {
+      window.location.href = "lokesh.html"; // Opens newpage.html in the same location
+  }
+</script>
+<script>
+  function openpavankalyanPage() {
+      window.location.href = "pavankalyan.html"; // Opens newpage.html in the same location
+  }
+</script>
+<script>
+  function openhanmanthPage() {
+      window.location.href = "hanmanth.html"; // Opens newpage.html in the same location
+  }
+</script>
+
+
+<script>
     // Sliding header text from left to right
     document.addEventListener("DOMContentLoaded", function () {
       const header = document.querySelector(".my_header");

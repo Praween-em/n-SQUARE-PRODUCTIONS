@@ -191,22 +191,35 @@
   }
   
   /* Slideshow */
-  #slideshow {
-    position: relative;
-    width: 80%;
-    max-width: 1200px;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  
-  .slide {
-    display: none;
-  }
-  
-  .fade {
-    
-    animation:ease-in 1.5s infinite;
-  }
+/* Slideshow Container */
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* Adjust as needed */
+  margin: auto;
+  overflow: hidden;
+}
+
+/* Individual Slides */
+.slide {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+/* Active Slide */
+.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Previous Slide Moves Out */
+.prev {
+  transform: translateX(-100%);
+}
+
   
   @keyframes fade {
     0% { opacity: 0; }
@@ -239,9 +252,14 @@
       transform: scale(1.05);
     }
     #slideshow img {
-      width: 100%;
-      height: auto;
+      max-width: 80%;
+      max-height: 60%;
     }
+    .lottie-animation {
+      width: 100%;
+      height: 400px; /* Adjust height as needed */
+    }
+    
     .nslogo{
       width: 75%;
       align-self: center;
